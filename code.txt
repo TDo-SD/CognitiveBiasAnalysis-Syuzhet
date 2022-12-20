@@ -10,3 +10,15 @@ nrc_sentiments <- get_sentiment(msgs, method = "nrc")
 syuzhet_sentiments <- get_sentiment(msgs, method = "syuzhet")
 
 emotions <- get_nrc_sentiment(msgs, language = "english")
+
+for(message in msgs){
+  words <- get_tokens(message)
+  for (word in words){
+    sentiment <- get_nrc_values(word)
+    for (i in 1:ncol(sentiment)){
+      if (sentiment[1, i] > 0) {
+        wordCOL[nrow(wordCOL) + 1,] = c(word)
+      }
+    }
+  }
+}

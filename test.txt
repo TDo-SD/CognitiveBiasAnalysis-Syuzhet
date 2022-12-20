@@ -1,0 +1,33 @@
+library(syuzhet)
+library(tm)
+
+data <- read.csv("GitterComR.csv")
+lexicon <- read.csv("NRC_Words&Values.csv")
+
+msgs <- data[["message"]]
+
+wordCOL <- data.frame(V1=character())
+
+emotions <- get_sentiment(msgs, method = "syuzhet")
+
+sentence <- get_tokens(msgs[8])
+
+#@aslakhellesoy  ... When reading \ The Cucumber Book\ i found the code below in Ruby .
+#there is any way to convert it to Java ? \n-----------\nCode : \nGiven /^an activated
+#customer (\\w+) exists$/ do |name|\nsteps %{\nGiven I create a customer with login #{name}\nAnd I
+#register the customer with login #{name}\nAnd I activate the customer with login #{name}\n}\nend
+
+print("_____________________START HERE THOMAS_______________________")
+
+#reading 1
+#found 3
+#convert 1
+#customer 4
+#create 2
+
+test1 <- get_nrc_values("customer")
+test2 <- get_nrc_values("found")
+test3<- get_nrc_values("convert")
+test4 <- get_nrc_values("create")
+test5 <- get_nrc_values("reading")
+
